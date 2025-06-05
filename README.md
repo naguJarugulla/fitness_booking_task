@@ -28,48 +28,53 @@ A simple booking API for a fictional fitness studio where users can view availab
 
 1. **Clone the repository**:
 
-bash
-git clone https://github.com/naguJarugulla/fitness_booking_task.git
-cd fitness_booking_task
+## Create and activate virtual environment:
 
-##Create and activate virtual environment:
 python -m venv env
-env\Scripts\activate  # For Windows
+env\Scripts\activate         # For Windows
 # OR
-source env/bin/activate  # For Mac/Linux
-#===============Install dependencies:
+source env/bin/activate      # For Mac/Linux
+## Install dependencies:
+
 pip install -r requirements.txt
+## Run the application:
 
-#==============Run the application:
 python app.py
-#==========================API Endpoints
----GET /classes
-Description: Returns all upcoming classes.
+Visit: http://127.0.0.1:5000
+
+## 📬 API Endpoints
+GET /classes
+Returns all upcoming classes.
+
+Example:
+
 curl "http://127.0.0.1:5000/classes"
-
-or
 curl "http://127.0.0.1:5000/classes?tz=UTC"
+GET /bookings?email=<email>
+Get bookings for a specific client email.
 
-----GET /bookings?email=<email>
-Description: Get bookings for a specific client email.
-Sample cURL:
+Example:
 curl "http://127.0.0.1:5000/bookings?email=test@example.com"
-----POST /book
-Description: Books a slot in a fitness class.
+POST /book
+Books a slot in a fitness class.
 Required Fields:
 class_id
 client_name
 client_email
-Sample cURL
-curl -X POST http://127.0.0.1:5000/book ^
-  -d "class_id=1" ^
-  -d "client_name=Ravi" ^
+
+Example:
+curl -X POST http://127.0.0.1:5000/book \
+  -d "class_id=1" \
+  -d "client_name=Ravi" \
   -d "client_email=ravi@example.com"
+Alternatively, use the HTML form at:
 
-Project Files
-app.py – Flask application with routes and logic
+http://127.0.0.1:5000/book
+## 📁 Project Files
+app.py – Flask application with API routes and logic
+
 templates/booking.html – HTML form for class booking
+
 requirements.txt – List of dependencies
+
 fitness_database.db – SQLite DB (auto-generated)
-
-
